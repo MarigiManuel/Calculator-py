@@ -1,42 +1,27 @@
-def add(x, y):
-    return x + y
+import random
 
-def subtract(x, y):
-    return x - y
+def guessing_game():
+    print("Welcome to the Number Guessing Game!")
+    print("I'm thinking of a number between 1 and 100. Can you guess it?")
 
-def multiply(x, y):
-    return x * y
+    # Generate a random number between 1 and 100
+    secret_number = 25
+    
+    attempts = 3
 
-def divide(x, y):
-    if y != 0:
-        return x / y
-    else:
-        return "Error: Cannot divide by zero"
+    while True:
+        # Get user input
+        guess = int(input("Enter your guess: "))
+        attempts += 1
 
-def calculator():
-    print("Simple Calculator")
-    print("Select operation:")
-    print("1. Add")
-    print("2. Subtract")
-    print("3. Multiply")
-    print("4. Divide")
-
-    choice = input("Enter choice (1/2/3/4): ")
-
-    if choice in ('1', '2', '3', '4'):
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-
-        if choice == '1':
-            print(num1, "+", num2, "=", add(num1, num2))
-        elif choice == '2':
-            print(num1, "-", num2, "=", subtract(num1, num2))
-        elif choice == '3':
-            print(num1, "*", num2, "=", multiply(num1, num2))
-        elif choice == '4':
-            print(num1, "/", num2, "=", divide(num1, num2))
-    else:
-        print("Invalid input. Please enter a valid choice.")
+        # Check if the guess is correct
+        if guess == secret_number:
+            print(f"Congratulations! You guessed the number {secret_number} in {attempts} attempts.")
+            break
+        elif guess < secret_number:
+            print("Too low. Try again.")
+        else:
+            print("Too high. Try again.")
 
 if __name__ == "__main__":
-    calculator()
+    guessing_game()
